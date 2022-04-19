@@ -8,7 +8,11 @@ public class MainApp {
         Path path = Path.of("testFile.txt");
 
         try {
-            Files.createFile(path);
+            if (Files.notExists(path)) {
+                Files.createFile(path);
+            } else {
+                System.out.println("Файл уже существует");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
